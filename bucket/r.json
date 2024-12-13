@@ -21,7 +21,7 @@
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "url": "https://ipv6.mirrors.ustc.edu.cn/CRAN/bin/windows/base/old/4.4.2/R-4.4.2-win.exe",
+            "url": "https://mirrors.ustc.edu.cn/CRAN/bin/windows/base/old/4.4.2/R-4.4.2-win.exe",
             "hash": "md5:825c9a1098481da1fe636207148a23a4",
             "bin": [
                 "bin\\x64\\R.exe",
@@ -46,7 +46,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ipv6.mirrors.ustc.edu.cn/CRAN/bin/windows/base/old/$version/R-$version-win.exe",
+                "url": "https://mirrors.ustc.edu.cn/CRAN/bin/windows/base/old/$version/R-$version-win.exe",
                 "hash": {
                     "url": "$baseurl/md5sum.R-$version.txt"
                 }
