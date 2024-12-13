@@ -1,0 +1,51 @@
+{
+    "version": "0.86.0",
+    "description": "A set of utilities for power users to tune and streamline their Windows experience for greater productivity.",
+    "homepage": "https://github.com/microsoft/PowerToys",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.nju.edu.cn/github-release/microsoft/PowerToys/LatestRelease/PowerToysUserSetup-0.86.0-x64.exe",
+            "hash": "cfb9608b28b8ff12c9a7c9814a6ef981636eb5ab261dc278c28ec93fd959cce2"
+        },
+        "arm64": {
+            "url": "https://mirror.nju.edu.cn/github-release/microsoft/PowerToys/LatestRelease/PowerToysUserSetup-0.86.0-arm64.exe",
+            "hash": "857de9dc5938d9602f82dfd6183db5e6823b875a412aec59b4be93617e27e9cd"
+        }
+    },
+    "installer": {
+        "script": [
+            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\.tmp\"",
+            "Get-ChildItem \"$dir\\.tmp\\AttachedContainer\\PowerToysUserSetup*.msi\" | Rename-Item -NewName 'PowerToysSetup.msi' -Force",
+            "Expand-MsiArchive \"$dir\\.tmp\\AttachedContainer\\PowerToysSetup.msi\" \"$dir\" -ExtractDir 'PowerToys'",
+            "Remove-Item \"$dir\\.tmp\", \"$dir\\$fname\" -Force -Recurse"
+        ]
+    },
+    "shortcuts": [
+        [
+            "PowerToys.exe",
+            "PowerToys"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/microsoft/PowerToys"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.nju.edu.cn/github-release/microsoft/PowerToys/LatestRelease/PowerToysUserSetup-$version-x64.exe",
+                "hash": {
+                    "url": "https://github.com/microsoft/PowerToys/releases/tag/v$version",
+                    "regex": ">$sha256<"
+                }
+            },
+            "arm64": {
+                "url": "https://mirror.nju.edu.cn/github-release/microsoft/PowerToys/LatestRelease/PowerToysUserSetup-$version-arm64.exe",
+                "hash": {
+                    "url": "https://github.com/microsoft/PowerToys/releases/tag/v$version",
+                    "regex": ">(?:[a-fA-F0-9]{64})<[\\s\\S]*?>([a-fA-F0-9]{64})<"
+                }
+            }
+        }
+    }
+}
